@@ -1,0 +1,22 @@
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid white;
+  white-space: nowrap;
+}
+
+.typewriter {
+  display: inline-block;
+  width: 0; /* Initial width of the text */
+  animation: typewriter 3s steps(30) 1s forwards, blink 1s infinite step-end; /* Smooth typewriter effect */
+}

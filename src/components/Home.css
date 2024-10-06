@@ -1,0 +1,165 @@
+/* Home.css */
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+:root {
+  --glow-color: hsl(186 100% 69%);
+}
+.home-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 100px; /* Adjust this according to your sticky navbar height */
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .text-content {
+    flex: 1;
+  }
+  
+  .gif-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .dog-gif {
+    max-width: 100%;
+    height: auto;
+    width: 400px; /* Adjust width as per requirement */
+  }
+  
+  h1 {
+    font-size: 3rem;
+    color: #333;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: #555;
+  }
+  
+  .typewrite {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .cursor {
+    font-weight: 100;
+    font-size: 2rem;
+    color: #333;
+    animation: blink 0.7s infinite;
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .glowing-btn {
+    position: relative;
+    color: var(--glow-color);
+    cursor: pointer;
+    padding: 0.25em 0.75em; /* Reduced padding for smaller button */
+    border: 0.1em solid var(--glow-color); /* Smaller border */
+    border-radius: 0.35em; /* Reduced border-radius */
+    background: none;
+    perspective: 2em;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5em; /* Reduced font-size */
+    font-weight: 900;
+    letter-spacing: 0.5em; /* Reduced letter-spacing to fit smaller button */
+  
+    -webkit-box-shadow: inset 0px 0px 0.4em 0px var(--glow-color),
+      0px 0px 0.4em 0px var(--glow-color); /* Slightly reduced box-shadow */
+    -moz-box-shadow: inset 0px 0px 0.4em 0px var(--glow-color),
+      0px 0px 0.4em 0px var(--glow-color);
+    box-shadow: inset 0px 0px 0.4em 0px var(--glow-color),
+      0px 0px 0.4em 0px var(--glow-color);
+    animation: border-flicker 2s linear infinite;
+  }
+  
+  .glowing-txt {
+    float: left;
+    margin-right: -0.6em; /* Adjusted margin-right for text spacing */
+    -webkit-text-shadow: 0 0 0.1em hsl(0 0% 100% / 0.3),
+      0 0 0.4em var(--glow-color);
+    -moz-text-shadow: 0 0 0.1em hsl(0 0% 100% / 0.3),
+      0 0 0.4em var(--glow-color);
+    text-shadow: 0 0 0.1em hsl(0 0% 100% / 0.3), 0 0 0.4em var(--glow-color);
+    animation: text-flicker 3s linear infinite;
+  }
+  
+  .faulty-letter {
+    opacity: 0.5;
+    animation: faulty-flicker 2s linear infinite;
+  }
+  
+  .glowing-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.7;
+    filter: blur(0.8em); /* Slightly reduced blur */
+    transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+    background: var(--glow-color);
+    pointer-events: none;
+  }
+  
+  .glowing-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: -1;
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1.5em 0.2em var(--glow-color); /* Reduced shadow size */
+    transition: opacity 100ms linear;
+  }
+  
+  .glowing-btn:hover {
+    color: rgba(0, 0, 0, 0.8);
+    text-shadow: none;
+    animation: none;
+  }
+  
+  .glowing-btn:hover .glowing-txt {
+    animation: none;
+  }
+  
+  .glowing-btn:hover .faulty-letter {
+    animation: none;
+    text-shadow: none;
+    opacity: 1;
+  }
+  
+  .glowing-btn:hover:before {
+    filter: blur(1.2em); /* Adjusted blur for hover */
+    opacity: 1;
+  }
+  
+  .glowing-btn:hover:after {
+    opacity: 1;
+  }
+  
+  /* Media query for smaller screens */
+  @media only screen and (max-width: 600px) {
+    .glowing-btn {
+      font-size: 1em; /* Smaller font-size for mobile */
+      padding: 0.2em 0.6em; /* Adjusted padding for mobile */
+      letter-spacing: 0.2em; /* Narrower letter-spacing for mobile */
+    }
+  }
+  

@@ -56,16 +56,16 @@ const Home = () => {
         }}
         id="home"
       >
-        <div className="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 py-10 dark:bg-gray-900">
+        <div className="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 py-10">
           <div className="flex flex-col items-start justify-center text-left space-y-4 max-w-lg">
             <h1 className="text-4xl font-bold text-yellow-400 dark:text-gray-100">
               Hello,
             </h1>
-            <h1 className="text-4xl font-bold text-gray-400 dark:text-gray-100">
-              This is <b className="font-bold text-yellow-400">Vamsi</b>
+            <h1 className="text-4xl font-bold text-white dark:text-gray-100">
+              This is <b className="font-bold text-yellow-400 dark:text-black">Vamsi</b>
             </h1>
-            <h2 className="text-2xl font-semibold text-gray-400 dark:text-gray-200">
-              I am passionate about{" "}
+            <h2 className="text-2xl font-semibold text-white dark:text-black">
+            <b className="text-gray-200 dark:text-gray-200">I'm</b> driven by{" "}
               <span className="font-bold text-yellow-400">{text}</span>
               <span className="cursor-blink">|</span>
             </h2>

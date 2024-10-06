@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "./static/css/main.f70a5e86.css",
+    "main.js": "./static/js/main.7180d68a.js",
+    "static/js/453.d73b0aaa.chunk.js": "./static/js/453.d73b0aaa.chunk.js",
+    "static/media/dog.gif": "./static/media/dog.9418be2bce34e8abafba.gif",
+    "static/media/Night.jpg": "./static/media/Night.e0d9adbeccecf43b0741.jpg",
+    "static/media/Port.png": "./static/media/Port.9d3e19bac0ec50d760e1.png",
+    "static/media/Me.jpg": "./static/media/Me.2def9d9247bfe3b1add8.jpg",
+    "static/media/News.png": "./static/media/News.1c23cb49f7405c2ca4a2.png",
+    "static/media/React.png": "./static/media/React.8fa476a9a466108da157.png",
+    "static/media/about.png": "./static/media/about.784aeb46c83f03736348.png",
+    "static/media/Telehealth.png": "./static/media/Telehealth.6878c6f8c0b6a9da06f9.png",
+    "static/media/SQL.png": "./static/media/SQL.96af83e68e3b32fb2dd7.png",
+    "static/media/python.png": "./static/media/python.07a98139a3638f2a224b.png",
+    "static/media/CSS.png": "./static/media/CSS.d1a3c1e59ca82dbdf815.png",
+    "static/media/java.png": "./static/media/java.f5dd86c3ef6ef3f85acf.png",
+    "static/media/bootstrap.png": "./static/media/bootstrap.268c4375260420e8d982.png",
+    "static/media/html-5.png": "./static/media/html-5.6f9a8699c0ea083043f5.png",
+    "static/media/js.png": "./static/media/js.3dfb665e058d08c99f28.png",
+    "index.html": "./index.html",
+    "main.f70a5e86.css.map": "./static/css/main.f70a5e86.css.map",
+    "main.7180d68a.js.map": "./static/js/main.7180d68a.js.map",
+    "453.d73b0aaa.chunk.js.map": "./static/js/453.d73b0aaa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f70a5e86.css",
+    "static/js/main.7180d68a.js"
+  ]
+}

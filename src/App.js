@@ -7,7 +7,7 @@ import Home from './components/Home';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Portfolio">
       <div className="App">
         <Navbar />
         <Routes>

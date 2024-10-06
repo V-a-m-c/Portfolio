@@ -28,7 +28,7 @@ const projectData = [
     description:
       "A personal website showcasing skills and projects, built with React and Tailwind CSS.",
     image: port,
-    link: "#", // Add project link
+    link: "https://vamsiprofile.netlify.app/", // Add project link
   },
 ];
 

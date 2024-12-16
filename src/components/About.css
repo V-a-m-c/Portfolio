@@ -11,10 +11,10 @@
 }
 
 .animate-tilt {
+  cursor:pointer;
   animation: tilt 10s infinite linear;
 }
 .highlight {
     color: yellow; /* You can replace this with any color, e.g., tomato color */
     font-weight: bold; /* Optional: Make the highlighted text bold */
   }
-  

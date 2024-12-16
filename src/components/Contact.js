@@ -80,8 +80,8 @@ const Contact = () => {
               <input
                 type="text"
                 id="name"
-                name="name"
-                value={formData.name}
+                name="from_name"
+                value={formData.from_name}
                 onChange={handleChange}
                 className="w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
                 placeholder="Your name"
@@ -98,8 +98,8 @@ const Contact = () => {
               <input
                 type="email"
                 id="email"
-                name="email"
-                value={formData.email}
+                name="from_email"
+                value={formData.from_email}
                 onChange={handleChange}
                 className="w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
                 placeholder="Your email"

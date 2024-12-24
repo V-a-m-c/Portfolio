@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 // import About from './components/About';
 
+// To deploy in Netlify remove base name and in json keep homepage:"."
 function App() {
   return (
     <Router basename="/Portfolio">

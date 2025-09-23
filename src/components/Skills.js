@@ -43,7 +43,7 @@ const skillsData = [
     },
     { 
         id: 6, 
-        skill: 'Tailwind (DaisyUI)', 
+        skill: 'Tailwind', 
         icon: Tailwind
     },
     { 
@@ -53,12 +53,12 @@ const skillsData = [
     },
     { 
         id: 8, 
-        skill: 'Node.js (Basics)', 
+        skill: 'Node.js', 
         icon: node 
     },
     { 
         id: 9, 
-        skill: 'Express (Basics)', 
+        skill: 'Express', 
         icon: express
     },
     { 
@@ -68,25 +68,20 @@ const skillsData = [
     },
     { 
         id: 11, 
-        skill: 'Python (Basics)', 
-        icon: python 
-    },
-    { 
-        id: 12, 
         skill: 'Java', 
         icon: java 
     },
     { 
-      id: 13, 
+      id: 12, 
       skill: 'MySQL', 
       icon: mysql 
   },
   { 
-    id: 14, 
+    id: 13, 
     skill: 'AWS', 
     icon: aws 
 }, { 
-  id: 15, 
+  id: 14, 
   skill: 'Firebase', 
   icon: fire 
 },

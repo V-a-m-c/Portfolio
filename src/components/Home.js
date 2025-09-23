@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import dogGif from "./dog.gif";
 import About from "./About";
-import BackgroundImage from "./Night.jpg";
+import BackgroundImage from "./Night.webp";
 import "./Home.css";
 import Education from "./Education";
 import Skills from "./Skills";

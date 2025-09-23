@@ -58,7 +58,7 @@ const About = () => {
                 technology.
               </p>
               <a
-                href="https://drive.google.com/file/d/1dqi6v1HtVODUQdSxnnE34dRWdU0rs3LC/view?usp=sharing"
+                href="https://drive.google.com/file/d/1zmZ2s2cF5-hEepEVLi_rzGw0MA71WuET/view?usp=sharing"
                 target="blank"
               >
                 <button

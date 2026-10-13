@@ -1,0 +1,12 @@
+{
+  "siteUrl": "https://vamsiprofile.netlify.app",
+  "home": {
+    "title": "Vamsi Korla | Full-Stack Developer & AI Applications",
+    "description": "Explore Vamsi Korla's portfolio, featuring full-stack development, AI applications, React, TypeScript, Python, FastAPI, APIs, and production software projects."
+  },
+  "resume": {
+    "path": "/resume",
+    "title": "Vamsi Korla Resume | Full-Stack Developer",
+    "description": "Resume of Vamsi Korla, Full-Stack Developer: experience at Audena AI, DhiAspire AI and NewOwl AI, projects, technical skills, education, and certifications."
+  }
+}

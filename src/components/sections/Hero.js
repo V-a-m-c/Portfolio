@@ -26,14 +26,14 @@ export default function Hero() {
             {profile.availability}
           </p>
 
-          <p className="eyebrow enter enter-1 mt-7">
-            {profile.title} · {profile.focus}
-          </p>
-          <h1
-            id="hero-title"
-            className="enter-rise mt-4 font-display text-[2.625rem] leading-[1.04] tracking-[-0.01em] text-ink sm:text-6xl lg:text-[4.25rem]"
-          >
-            Building <em className="mark text-accent">intelligent products</em> from frontend to backend.
+          {/* One heading carries the name, role, and headline for search engines and screen readers. */}
+          <h1 id="hero-title" className="mt-7">
+            <span className="eyebrow enter enter-1 block">
+              {profile.name} · {profile.title} · {profile.focus}
+            </span>{" "}
+            <span className="enter-rise mt-4 block font-display text-[2.625rem] leading-[1.04] tracking-[-0.01em] text-ink sm:text-6xl lg:text-[4.25rem]">
+              Building <em className="mark text-accent">intelligent products</em> from frontend to backend.
+            </span>
           </h1>
           <p className="lead enter enter-2 mt-6 max-w-xl">{profile.intro}</p>
 

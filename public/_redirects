@@ -1,2 +1,4 @@
-# Client-side routes served by the React app
+# /resume is served from the prerendered build/resume.html (see scripts/postbuild.js).
+# This rule is only a fallback to the app shell if that file is ever missing;
+# Netlify prefers an existing file over a non-forced rewrite.
 /resume    /index.html    200

@@ -10,7 +10,7 @@ export default function About() {
       <div className="container-page">
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
           <div>
-            <SectionHeading id="about-title" eyebrow="About" title="From intern to full-stack product work." />
+            <SectionHeading id="about-title" eyebrow="About Vamsi Korla" title="From intern to full-stack product work." />
             <Reveal className="mt-6 max-w-prose space-y-4 text-base leading-relaxed text-ink-soft">
               {about.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>

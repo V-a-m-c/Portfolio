@@ -5,8 +5,9 @@ import { profile } from "../data/profile";
 import { experience } from "../data/experience";
 import { projects } from "../data/projects";
 import { certifications, education, skillGroups } from "../data/skills";
+import seo from "../data/seo.json";
 
-const HOME_TITLE = document.title;
+const canonicalFor = (page) => `${seo.siteUrl}${page.path || "/"}`;
 
 function Block({ title, children }) {
   return (
@@ -20,10 +21,16 @@ function Block({ title, children }) {
 }
 
 export default function Resume() {
+  // Keep the tab title and canonical URL in step with the route when the page
+  // is reached by in-app navigation. A direct visit gets these from the static
+  // build/resume.html written by scripts/postbuild.js.
   useEffect(() => {
-    document.title = `Resume | ${profile.name}`;
+    const canonical = document.querySelector('link[rel="canonical"]');
+    document.title = seo.resume.title;
+    if (canonical) canonical.href = canonicalFor(seo.resume);
     return () => {
-      document.title = HOME_TITLE;
+      document.title = seo.home.title;
+      if (canonical) canonical.href = canonicalFor(seo.home);
     };
   }, []);
 

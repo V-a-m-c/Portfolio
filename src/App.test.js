@@ -7,9 +7,10 @@ beforeEach(() => {
 
 test('renders the hero with name, role, and primary calls to action', () => {
   render(<App />);
-  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-    'Building intelligent products from frontend to backend.'
-  );
+  const heading = screen.getByRole('heading', { level: 1 });
+  expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1);
+  expect(heading).toHaveTextContent('Vamsi Korla · Full Stack Developer · AI Applications');
+  expect(heading).toHaveTextContent('Building intelligent products from frontend to backend.');
   expect(screen.getByText(/I'm Vamsi Korla, a Full Stack Developer/)).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Explore My Work' })).toHaveAttribute('href', '/#projects');
   expect(screen.getAllByRole('link', { name: 'View Resume' })[0]).toHaveAttribute('href', '/resume');

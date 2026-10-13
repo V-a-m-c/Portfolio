@@ -1,16 +1,734 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* Fonts are declared and preloaded in public/index.html. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+    font-feature-settings: "cv11", "ss03";
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-accent;
+  }
+
+  ::selection {
+    @apply bg-accent text-white;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-page px-5 sm:px-8;
+  }
+
+  .section {
+    @apply py-16 sm:py-24;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.16em] text-accent;
+  }
+
+  .section-title {
+    @apply font-display text-4xl leading-[1.08] text-ink sm:text-5xl;
+  }
+
+  .lead {
+    @apply text-base leading-relaxed text-ink-soft sm:text-lg;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[2.75rem] items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 text-sm font-medium transition duration-200 ease-out;
+  }
+
+  .btn-primary {
+    @apply bg-ink text-white hover:bg-accent-deep active:translate-y-px;
+  }
+
+  .btn-secondary {
+    @apply border border-line bg-surface text-ink hover:border-ink active:translate-y-px;
+  }
+
+  .btn-on-night {
+    @apply bg-accent-bright text-night hover:bg-white active:translate-y-px;
+  }
+
+  .btn-ghost-night {
+    @apply border border-night-line text-night-text hover:border-night-mute active:translate-y-px;
+  }
+
+  .icon-btn {
+    @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-ink-soft transition duration-200 hover:border-ink hover:text-ink;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-surface shadow-card;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-line bg-paper px-3 py-1 text-[0.8125rem] leading-5 text-ink-soft;
+  }
+
+  .chip-night {
+    @apply inline-flex items-center rounded-full border border-night-line px-3 py-1 text-[0.8125rem] leading-5 text-night-mute;
+  }
+
+  .link-underline {
+    @apply underline decoration-line decoration-1 underline-offset-4 transition-colors duration-200 hover:decoration-accent;
+  }
+}
+
+/* Scroll reveal. Content is only hidden when motion is welcome and the
+   observer hook has opted the element in, so nothing depends on it. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.3s ease-out;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-delay-1 { transition-delay: 80ms; }
+  .reveal-delay-2 { transition-delay: 160ms; }
+  .reveal-delay-3 { transition-delay: 240ms; }
+
+  .enter {
+    animation: enter 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .enter-1 { animation-delay: 60ms; }
+  .enter-2 { animation-delay: 140ms; }
+  .enter-3 { animation-delay: 220ms; }
+  .enter-4 { animation-delay: 320ms; }
+  .enter-late { animation-delay: 1.8s; }
+
+  .pop-in {
+    animation: pop-in 0.25s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .flow-pulse {
+    animation: flow-pulse 3.2s ease-in-out infinite;
+  }
+
+  .flow-step-1 { animation-delay: 0s; }
+  .flow-step-2 { animation-delay: 0.8s; }
+  .flow-step-3 { animation-delay: 1.6s; }
+  .flow-step-4 { animation-delay: 2.4s; }
+
+  .status-ping {
+    animation: status-ping 2.4s ease-out infinite;
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes flow-pulse {
+  0%, 70%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes status-ping {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  70%, 100% {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+
+@keyframes avatar-blink {
+  0%, 46%, 50%, 100% {
+    transform: scaleY(1);
+  }
+  48% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Decorative elements: resting states. These apply with or without
+   motion, so the page is complete when animations are disabled.
+   ------------------------------------------------------------------ */
+
+/* Highlighter stroke behind the emphasised words in the hero heading */
+.mark {
+  background-image: linear-gradient(#e2f0ea, #e2f0ea);
+  background-repeat: no-repeat;
+  background-position: 0 90%;
+  background-size: 100% 0.3em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Soft colour fields behind the hero. Plain gradients, no blur filters. */
+.hero-glow {
+  position: absolute;
+  border-radius: 9999px;
+}
+
+.hero-glow-a {
+  right: -14rem;
+  top: -18rem;
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(closest-side, rgba(111, 224, 189, 0.26), rgba(111, 224, 189, 0));
+}
+
+@media (min-width: 1024px) {
+  .hero-glow-a {
+    right: -10rem;
+    top: -16rem;
+    width: 44rem;
+    height: 44rem;
+  }
+}
+
+.hero-glow-b {
+  left: -16rem;
+  bottom: -24rem;
+  width: 40rem;
+  height: 40rem;
+  background: radial-gradient(closest-side, rgba(10, 102, 80, 0.1), rgba(10, 102, 80, 0));
+}
+
+/* A point of light that travels around the border of the hero panel */
+.beam::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 200%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(from 0deg, transparent 0deg 300deg, rgba(111, 224, 189, 0.95) 345deg, transparent 360deg);
+}
+
+.scroll-progress {
+  display: none;
+}
+
+.timeline-fill {
+  transform-origin: top;
+}
+
+/* Assistant avatar and waveform: each state has a distinct still pose */
+.avatar-ring,
+.avatar-arc {
+  transform-origin: 48px 48px;
+}
+
+.avatar-ring {
+  opacity: 0.45;
+}
+
+.avatar-finished .avatar-ring {
+  stroke-dasharray: none;
+  opacity: 0.9;
+}
+
+.avatar-eye,
+.avatar-bar,
+.wave-bar {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.avatar-paused .avatar-eye {
+  transform: scaleY(0.45);
+}
+
+.avatar-bar {
+  transform: scaleY(0.35);
+}
+
+.avatar-speaking .avatar-bar {
+  transform: scaleY(1);
+}
+
+.avatar-paused .avatar-bar {
+  transform: scaleY(0.7);
+}
+
+.avatar-scan {
+  opacity: 0;
+}
+
+.wave-bar {
+  transform: scaleY(0.18);
+  opacity: 0.5;
+}
+
+.wave-speaking .wave-bar {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.wave-paused .wave-bar {
+  transform: scaleY(0.55);
+  opacity: 0.75;
+}
+
+.wave-finished .wave-bar {
+  opacity: 0.9;
+}
+
+.state-dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+  background: #a2aaa5;
+}
+
+.state-dot-speaking,
+.state-dot-finished {
+  background: #6fe0bd;
+}
+
+.state-dot-paused {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px #6fe0bd;
+}
+
+.launcher-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid #0a6650;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------
+   Motion. Everything below is opt-in for visitors who allow it.
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: the heading only slides, so it is readable from the first frame */
+  .enter-rise {
+    animation: enter-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .mark {
+    animation: mark-sweep 1s 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .hero-glow-a {
+    animation: glow-drift 16s ease-in-out infinite alternate;
+  }
+
+  .hero-glow-b {
+    animation: glow-drift 22s ease-in-out infinite alternate-reverse;
+  }
+
+  .beam::before {
+    animation: beam-spin 7s linear infinite;
+  }
+
+  .rotator-track {
+    animation: rotator 8s cubic-bezier(0.7, 0, 0.2, 1) infinite;
+  }
+
+  /* Looping hero animations stop while the hero is scrolled out of view */
+  .is-offscreen .hero-glow,
+  .is-offscreen .beam::before,
+  .is-offscreen .rotator-track,
+  .is-offscreen .flow-pulse,
+  .is-offscreen .status-ping {
+    animation-play-state: paused;
+  }
+
+  /* Buttons and navigation */
+  .btn-arrow {
+    transition: transform 0.25s ease-out;
+  }
+
+  .btn:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.22) 50%, transparent 65%);
+    transform: translateX(-120%);
+    transition: transform 0.7s ease-out;
+  }
+
+  .btn-shine:hover::after {
+    transform: translateX(120%);
+  }
+
+  .nav-indicator {
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), width 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+      opacity 0.2s ease-out;
+  }
+
+  .page-enter {
+    animation: enter 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  /* Details that play once when their section is revealed */
+  .reveal .draw-x {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s;
+  }
+
+  .reveal .milestone {
+    transform: scale(0.3);
+    transition: transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 1) 0.15s;
+  }
+
+  .reveal .visual-reveal {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s;
+  }
+
+  .reveal .bar-grow {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.7s;
+  }
+
+  .reveal .art-feedback,
+  .reveal .stagger > * {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+  }
+
+  .reveal .art-feedback {
+    transition-delay: 0.9s;
+  }
+
+  .reveal .stagger > :nth-child(1) { transition-delay: 0.2s; }
+  .reveal .stagger > :nth-child(2) { transition-delay: 0.24s; }
+  .reveal .stagger > :nth-child(3) { transition-delay: 0.28s; }
+  .reveal .stagger > :nth-child(4) { transition-delay: 0.32s; }
+  .reveal .stagger > :nth-child(5) { transition-delay: 0.36s; }
+  .reveal .stagger > :nth-child(6) { transition-delay: 0.4s; }
+  .reveal .stagger > :nth-child(7) { transition-delay: 0.44s; }
+  .reveal .stagger > :nth-child(8) { transition-delay: 0.48s; }
+  .reveal .stagger > :nth-child(n + 9) { transition-delay: 0.52s; }
+
+  .reveal.is-visible .draw-x,
+  .reveal.is-visible .milestone,
+  .reveal.is-visible .bar-grow,
+  .reveal.is-visible .art-feedback,
+  .reveal.is-visible .stagger > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal.is-visible .visual-reveal {
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* Project illustration comes alive while its card is hovered or focused */
+  .art-wave rect {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .group:hover .art-wave rect,
+  .group:focus-within .art-wave rect {
+    animation: wave-bar 0.5s ease-in-out infinite alternate;
+  }
+
+  /* Assistant */
+  .avatar-live .avatar-eye {
+    animation: avatar-blink 5s infinite;
+  }
+
+  .avatar-live .avatar-ring {
+    animation: spin 30s linear infinite;
+  }
+
+  .avatar-live .avatar-arc {
+    animation: spin 12s linear infinite reverse;
+  }
+
+  .avatar-live.avatar-speaking .avatar-arc {
+    animation-duration: 4s;
+  }
+
+  .avatar-live .avatar-scan {
+    opacity: 1;
+    animation: avatar-scan 5s ease-in-out infinite;
+  }
+
+  .avatar-speaking .avatar-bar {
+    animation: avatar-bar 0.42s ease-in-out infinite alternate;
+  }
+
+  .wave-bar {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+
+  .wave-speaking .wave-bar {
+    animation: wave-bar 0.5s ease-in-out infinite alternate;
+  }
+
+  .art-wave rect:nth-child(2n),
+  .avatar-bar:nth-child(2n),
+  .wave-bar:nth-child(2n) {
+    animation-duration: 0.38s;
+    animation-delay: -0.15s;
+  }
+
+  .art-wave rect:nth-child(3n),
+  .avatar-bar:nth-child(3n),
+  .wave-bar:nth-child(3n) {
+    animation-duration: 0.62s;
+    animation-delay: -0.3s;
+  }
+
+  .avatar-paused .avatar-eye,
+  .avatar-paused .avatar-ring,
+  .avatar-paused .avatar-arc,
+  .avatar-paused .avatar-scan {
+    animation-play-state: paused;
+  }
+
+  .launcher-pulse::after {
+    animation: launcher-ping 2.6s ease-out 1.2s 3;
+  }
+}
+
+/* Scroll-linked effects run on the compositor with no JavaScript. Browsers
+   without scroll timelines simply show the finished state. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Longhands only: the build sorts declarations, and the `animation`
+       shorthand would reset the timeline if it ended up after it. */
+    .timeline-fill {
+      animation-name: grow-y;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 60%;
+    }
+
+    .scroll-progress {
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 2px;
+      background: #0a6650;
+      transform-origin: left;
+      animation-name: grow-x;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+
+@keyframes enter-rise {
+  from {
+    transform: translateY(14px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes mark-sweep {
+  from {
+    background-size: 0% 0.3em;
+  }
+  to {
+    background-size: 100% 0.3em;
+  }
+}
+
+@keyframes glow-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-3rem, 2.5rem, 0) scale(1.12);
+  }
+}
+
+@keyframes beam-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes rotator {
+  0%, 42% {
+    transform: translateY(0);
+  }
+  50%, 92% {
+    transform: translateY(-1rem);
+  }
+  100% {
+    transform: translateY(-2rem);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes grow-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes wave-bar {
+  from {
+    transform: scaleY(0.3);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes avatar-bar {
+  from {
+    transform: scaleY(0.3);
+  }
+  to {
+    transform: scaleY(1.15);
+  }
+}
+
+@keyframes avatar-scan {
+  0% {
+    transform: translateY(0);
+  }
+  60%, 100% {
+    transform: translateY(132px);
+  }
+}
+
+@keyframes launcher-ping {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  80%, 100% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+}
+
+/* Project case-study dialog */
+.case-dialog {
+  @apply m-auto w-[calc(100%-1.5rem)] max-w-3xl rounded-2xl border border-line bg-surface p-0 text-ink shadow-lift;
+  max-height: calc(100dvh - 1.5rem);
+}
+
+.case-dialog::backdrop {
+  background: rgba(17, 20, 19, 0.55);
+}
+
+/* Subtle dotted texture used behind the hero */
+.dot-grid {
+  background-image: radial-gradient(rgba(21, 23, 26, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 70% 30%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 70% at 70% 30%, #000 20%, transparent 75%);
+}
+
+@media print {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .resume-sheet {
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  @page {
+    margin: 14mm;
+  }
+}

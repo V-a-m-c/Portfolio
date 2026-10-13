@@ -59,7 +59,8 @@ export const about = {
   ],
   facts: [
     { label: "Experience", value: "1 yr 9 mos, including a paid internship" },
-    { label: "Currently", value: "Junior Full-Stack Developer, Audena AI" },
+    // Non-breaking spaces keep "(UAE · Remote)" together when the line wraps.
+    { label: "Currently", value: "Junior Full-Stack Developer, Audena AI (UAE · Remote)" },
     { label: "Based in", value: "Andhra Pradesh, India" },
     { label: "Open to", value: "Hyderabad, Bengaluru, remote" },
   ],
